@@ -24,7 +24,7 @@ router.post('/recipe', function(req, res){
  * GET REQUEST
  * get a random meme
  */
-router.post('/meme', function(req, res){
+router.get('/meme', function(req, res){
     RecipeController.randomMeme(function(err, fileName) {
         if (err){
             return res.status(400).send(err);
