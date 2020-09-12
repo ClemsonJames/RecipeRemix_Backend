@@ -9,8 +9,9 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+
 //route
-const api = require('./recipe-remix/backend/routes/api');
+const api = require('./routes/api');
 app.use('/api', api)
 
 app.listen(port, () => {
