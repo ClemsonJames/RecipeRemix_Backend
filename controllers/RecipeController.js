@@ -4,7 +4,7 @@ const spawn = require("child_process").spawn;
 var RecipeController = {};
 
 RecipeController.createRecipe = function(food, callback) {
-    return callback({
+    return callback(null, {
         recipe: food + " taste good"
     });
     

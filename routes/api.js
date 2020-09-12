@@ -3,6 +3,7 @@ const router = express.Router();
 const RecipeController = require('../controllers/RecipeController');
 
 /**
+ * POST REQUEST
  * get random recipe based on ingredient
  * body {
  *  food: food
