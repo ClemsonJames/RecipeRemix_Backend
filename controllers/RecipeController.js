@@ -3,9 +3,12 @@ const spawn = require("child_process").spawn;
 
 var RecipeController = {};
 
-RecipeController.createRecipe = function() {
+RecipeController.createRecipe = function(food, callback) {
+    return callback({
+        recipe: food + " taste good"
+    });
     
 }
 
 
-module.exports = UserController;
+module.exports = RecipeController;
