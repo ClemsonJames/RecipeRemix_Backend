@@ -1,12 +1,43 @@
 const path = require('path');
-const spawn = require("child_process").spawn;
-//const pythonProcess = spawn('python',["path/to/script.py", arg1, arg2, ...]);
-const fs = require('fs');
-var RecipeController = {};
+const {PythonShell} = require('python-shell')
 
-RecipeController.createRecipe = function(food, callback) {
-    return callback(null, {
-        recipe: food + ' taste good'
+let RecipeController = {};
+
+// michaels model
+RecipeController.createRecipe1 = function(food, callback) {
+    let options = {
+        mode: 'text',
+        pythonPath:  process.env.PYTHON_PATH,
+        pythonOptions: ['-u'], // get print results in real-time
+        scriptPath: __dirname + '../../../models/michael',
+        args: [food]
+    };
+    
+    PythonShell.run('predict.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        return callback(null, {
+            recipe: results
+        });
+    });
+}
+
+// jonathan model
+RecipeController.createRecipe2 = function(food, callback) {
+    let options = {
+        mode: 'text',
+        pythonPath: 'C:/Users/Tina/AppData/Local/Programs/Python/Python37/python.exe',
+        pythonOptions: ['-u'], // get print results in real-time
+        scriptPath: __dirname + '../../../models/jonathan',
+        args: [food]
+    };
+    
+    PythonShell.run('test_script.py', options, function (err, results) {
+        if (err) throw err;
+        // results is an array consisting of messages collected during execution
+        return callback(null, {
+            recipe: results
+        });
     });
 }
 
