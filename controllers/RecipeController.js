@@ -26,7 +26,7 @@ RecipeController.createRecipe1 = function(food, callback) {
 RecipeController.createRecipe2 = function(food, callback) {
     let options = {
         mode: 'text',
-        pythonPath: 'C:/Users/Tina/AppData/Local/Programs/Python/Python37/python.exe',
+        pythonPath: process.env.PYTHON_PATH,
         pythonOptions: ['-u'], // get print results in real-time
         scriptPath: __dirname + '../../../models/jonathan',
         args: [food]
